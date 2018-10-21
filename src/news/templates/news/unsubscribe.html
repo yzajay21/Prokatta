@@ -1,0 +1,39 @@
+{% extends 'base1.html' %}
+{% load staticfiles %}
+{% block content %}
+	<div class="section section-bg-3 section-cover footer-newsletter style-1 pt-11 pb-8 mt-20">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-1">&nbsp;</div>
+							<div class="col-md-4">
+								<div class="footer-newsletter-left">Unsubscribe to our Newsletter</div>
+							</div>
+							{% if messages %}
+								{% for message in messages  %}
+									<div {% if message.tags %} class="{{ message.tags  }} {% endif %}alert alert-warning alert-dismissible" role="alert">
+									  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									  	
+									  	{{ message }}
+									</div>
+								{% endfor %}
+							{% else %}
+						<div class="col-md-6">
+							<div class="footer-newsletter-right">
+								<form method="post">{% csrf_token %}
+									<div class="form-fields">
+										<div class="form">
+											<input type="email" name="email" placeholder="Enter your e-mail" />
+											<input type="submit" value="Submit" />
+										</div>
+										<p class="note">Note* : Spectators are our passion. Creation is our core.</p>
+										</div>
+								
+								</form>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+{% endblock %}
+

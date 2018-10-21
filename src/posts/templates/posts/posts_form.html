@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+	{% load staticfiles %}
+	
+	{% load crispy_forms_tags %}
+	{% block head_title %}{{ instance.title }} | {{ block.super }} {% endblock %}
+
+	 {% block head_extra %}
+	 	{{ form.media }}
+	 {% endblock head_extra %}
+	 {% block content %}	
+	<div class="row">
+		<div class='col-sm-6'>
+			<h1>Preview</h1>
+			<hr/>
+			<div class='content-preview'>
+    			<h3 id='preview-title'></h3>
+    			<h2 id='preview-title'></h2>
+   				 <p id='preview-content'></p>
+			</div>
+		</div>
+		<div class='col-sm-6'>
+			<h1 class>Form</h1>
+			<hr/>
+			<form method='POST' enctype="multipart/form-data">
+				{{ form|crispy }}{% csrf_token %}
+
+				<input type="submit" class="btn btn-success" value='Create Post'/>
+			</form>	
+		</div>
+	</div>
+{% endblock %}

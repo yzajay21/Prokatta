@@ -1,0 +1,188 @@
+@charset "utf-8";
+.color {
+	color: #FF4500 !important;
+}
+a:hover, a:active {
+	color: #FF4500;
+}
+.button:hover {
+	background-color: #FF8C00;
+	color: #fff;
+}
+.topbar {
+    color: #ffffff;
+	background-color: #FF8C00;
+}
+.topbar a {
+	color: #ffff;
+}
+.search-trigger {
+	background-color: #ff8c8c;
+    color: #FFFFFF;
+}
+.header-search {
+	background-color: ##FF8C00;
+}
+.menu-social, .side-menu, .shopping-cart {
+    line-height: 120px;
+	height: 120px;
+}
+.side-menu, .shopping-cart {
+    float: right;
+}
+.menu-social > a,
+.shopping-cart a {
+    color: #111;
+}
+.menu-social > a:hover, .shopping-cart a:hover {
+    color: ##FF8C00;
+}
+.header .sidebar-trigger:hover .line {
+    background-color: ##FF8C00;
+}
+.main-menu .navbar-nav li a:hover,
+.header-sticky .sticky-menu .main-menu .navbar-nav li > a:hover {
+    color: ##FF8C00;
+}
+.main-menu .navbar-nav > li > a:after {
+    background-color: ##FF8C00;
+}
+.main-menu .navbar-nav li.current > a,
+.main-menu .navbar-nav li:hover > a,
+.main-menu .navbar-nav li > .sub-menu li:hover > a,
+.main-menu li.megamenu > .sub-menu > li > .sub-menu li:hover > a {
+	color: #FF8C00;
+}
+.blog-slick-slider .blog-item:hover .info:after {
+	background-color: #FF8C00;
+}
+.blog-list .blog-item .info .tags a:hover,
+.blog-list .blog-item .info .title a:hover {
+    color: #FF8C00;
+}
+.shout-mega-date {
+    color: #FF8C00;
+}
+.widget .widget-title-wrapper .widget-title .simple-line {
+    border-bottom-color: ##FF8C00;
+}
+.widget-recent-post .content .title a:hover {
+    color: #FF8C00;
+}
+.widget-tags a:hover {
+	border: 1px solid ##FF8C00;
+}
+.form-signup-row .highlighted:focus {
+    border-color: ##FF8C00;
+}
+.recent-tweets a:hover {
+    color: #FF8C00;
+}
+.recent-post h6 a:hover {
+	color: #FF8C00;
+}
+.copyright .footer-menu li a:hover {
+	color: #FF8C00;
+}
+#hook-to-top {
+    background-color: #FF8C00;
+}
+.load-more a {
+	color: #fff;
+}
+.load-more a:before {
+	background-color: ##FF8C00;
+}
+.load-more i {
+	color: #FF8C00;
+}
+blockquote {
+    border-color: #FF8C00;
+	color: #FF8C00;
+}
+.author-name a:hover {
+    color: #FF8C00;
+}
+.author-detail .simple-line {
+    border-bottom-color: #FF8C00;
+}
+.section-title .simple-line {
+    border-bottom-color: #FF8C00;
+}
+.author-info .author-name:hover  {
+    color: #FF8C00;
+}
+.single-nav .single-nav-wrapper a:hover {
+    color: #FF8C00;
+}
+.highlighted:focus {
+	border-color: #FF8C00;
+}
+.pagination ul.page-numbers li a:hover {
+    color: #FF8C00;
+}
+a.contact-info:hover {
+	color: #FF8C00;
+}
+.star-rating:before {
+    color: #FF8C00;
+}
+.star-rating span {
+    color: #FF8C00;
+}
+form.cart button {
+    background: #FF8C00;
+}
+.product-meta .product-meta-wrapper .product-meta-tags a:hover,
+.commerce-product-rating .commerce-review-link {
+    color: #FF8C00;
+}
+.product-comment .nav-tabs li.active a {
+    color: #FF8C00;
+}
+table.shop-table td.actions .button:hover {
+    background: #FF8C00;
+}
+.nav-tabs>li.active > a, 
+.nav-tabs > li.active > a:focus, 
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li:hover > a {
+	color: #FF8C00;
+}
+.testimonials-slider .owl-page.active:before {
+    background-color: ##FF8C00;
+    border-color: ##FF8C00;
+}
+.bg-color {
+	background-color: ##FF8C00;
+}
+.block-progressbar .progressbar {
+	background-color: ##FF8C00;
+}
+.accordion-heading a.active,
+.accordion-heading a.active + i {
+	color: ##FF8C00 !important;
+}
+blockquote.style-1 {
+	border-color: ##FF8C00;
+}
+blockquote.style-3 {
+	background-color: ##FF8C00;
+}
+.price-type {
+    color: ##FF8C00;
+}
+.comment-list .comment-content .meta, .showcase-table > li.title,
+.shout-mega-title > a, .blog-slick-slider .blog-item .info .meta,
+.blog-list .blog-item .info .title a, .blog-list .blog-item .info .title a,
+.blog-list .blog-item .info .title a, .blog-detail-header .entry-title,
+.blog-detail.related-post h4.title, .blog-detail.related-post .sub-title,
+.single-nav .single-nav-wrapper, .masonry-filter a, .widget-recent-post .content .title a,
+.banner .caption, .recent-tweets .twt-author, .recent-post h6 a, .author-name,
+.author-detail-name, .team-member .member-desc h3, .team-member .member-name,
+.nav-tabs > li > a, .counter-digit, .counter-desc, .cms-progress-wraper .cms-progress-title,
+.block-progressbar .progressbar-front-text, .accordion-heading a, .price-header,
+.summary .price, .product-comment .nav-tabs li, table.shop-table th,
+.form-checkout label, .payment-product-list .product-item, .cart-total, .payment_methods {
+    font-family: 'Lato', sans-serif;
+}

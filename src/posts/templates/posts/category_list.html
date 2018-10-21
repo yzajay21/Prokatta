@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block categories %}
+	<div id='main'>
+		<div class="section mt-7 mb-9">
+            <div class="container">
+                <div class="row">
+                    {% for category in object_list %}
+                        <div class="col-md-4">
+                            <div class="banner">
+                                {% if category.image %}
+                                    <a href="{{ category.get_absolute_url }}" class="link">
+                                        <img src="{{ category.image.url }}" alt="" />
+                                    </a>
+                                {% endif %}
+                                <div class="caption">
+                                    <span>{{ category.title }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

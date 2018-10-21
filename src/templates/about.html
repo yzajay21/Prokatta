@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<style>
+ .picteam{
+ 	width:400px !important;
+ 	height:400px !important;
+ }
+</style>
+<div id="main">
+	<div class="section mt-5 mb-10">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-title text-center">
+						<h2 class="lato">OUR TEAM</h2>
+						<h5>
+						Meet the faces behind our stunning project.<br />
+						Get in touch for more info.
+						</h5>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="team-member text-center">
+						<div class="member-info">
+							<div class="member-desc">
+								<h3>Amit Patl</h3>
+									
+							</div>
+							<div class="member-overlay"></div>
+							<img  class="picteam" src="{% static 'images/amit.jpeg' %}"  alt="">
+							<div class="member-links">
+								
+							</div>
+						</div>
+						<div class="member-name">Amit Patil</div>
+						<div class="member-position">Founder</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team-member text-center">
+						<div class="member-info">
+							<div class="member-desc">
+								<h3>Vijay Tayde</h3>
+						
+							</div>
+							<div class="member-overlay"></div>
+							<img class="picteam" src="{% static 'images/Vijay.jpg' %}" alt="">
+							<div class="member-links">
+								
+							</div>
+						</div>
+						<div class="member-name">Vijay Tayde</div>
+						<div class="member-position">Co founder</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team-member text-center">
+						<div class="member-info">
+							<div class="member-desc">
+								<h3>Khileshwar Patil</h3>
+								
+							</div>
+							<div class="member-overlay"></div>
+							<img  class="picteam" src="{% static 'images/boy.jpg' %}" alt="">
+							<div class="member-links">
+								<!--<div class="member-links-inner">
+									<div class="link">
+										<a href="#"><i class="socialink fa fa-dribbble"></i></a>
+									</div>
+									<div class="link">
+										<a href="#"><i class="socialink fa fa-twitter"></i></a>
+									</div>
+									<div class="link">
+										<a href="#"><i class="socialink fa fa-pinterest"></i></a>
+									</div>-->
+								</div>
+							</div>
+						</div>
+						<div class="member-name">Khileshwar Patil</div>
+						<div class="member-position">Co founder</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team-member text-center">
+						<div class="member-info">
+							<div class="member-desc">
+								<h3>Piyu chaskar</h3>
+								
+							</div>
+							<div class="member-overlay"></div>
+							<img  class="picteam" src="{% static 'images/girl.jpg' %}" alt="">
+							<div class="member-links">
+								<!--<div class="member-links-inner">
+									<div class="link">
+										<a href="#"><i class="socialink fa fa-dribbble"></i></a>
+									</div>
+									<div class="link">
+										<a href="#"><i class="socialink fa fa-twitter"></i></a>
+									</div>
+									<div class="link">
+										<a href="#"><i class="socialink fa fa-pinterest"></i></a>
+									</div>-->
+								</div>
+							</div>
+						</div>
+						<div class="member-name">Piyu haskar</div>
+						<div class="member-position">Shop Manager</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

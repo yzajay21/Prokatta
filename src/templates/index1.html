@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<style>
+    .imagesize {
+        width:780px !important;
+        height:490px !important;
+    }
+</style>
+{% block category %}
+	<div id="main">
+        <div class="section">
+             <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 p-0">
+                        <div class="blog-slick-slider" data-items="3">
+                            {% for posts in featured %}
+                                <div class="blog-item">
+                                    <div class="blog-inner">
+                                        <a href="{{ posts.get_absolute_url }}">
+                                            {% if posts.image %}
+                                                <img src="{{ posts.image_thumbnail.url }}"  class="imagesize" alt="" />
+                                            {% endif %}
+                                        </a>
+                                        <div class="info">
+                                            <div class="tags">
+                                                <a href="#">{{ posts.tags.all|join:", " }}</a>
+                                            </div>
+                                            <div class="title">
+                                                <a href="{{ posts.get_absolute_url }}">{{ posts.title }}</a>
+                                            </div>
+                                            <div class="meta">
+                                                <span class="date">{{ posts.timestamp }}</span>
+                                                <a class="readmore" href="{{ posts.get_absolute_url }}">Read More →</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="section mt-7">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="blog-list">
+                        {% for posts in posts %}
+                            <div class="blog-item text-center mb-6">
+                                <div class="blog-inner">
+                                    <a href='{{ posts.get_absolute_url }}'>
+                                        {% if posts.image %}
+                                            <div class="overlay"><i class="mdi-link-variant"></i></div>
+                                            <img src="{{ posts.posts_image.url }}" alt=""/>
+                                        {% endif %}
+                                    </a>
+                                    <div class="info">
+                                        <div class="tags">
+                                            <a href="{{ posts.get_absolute_url }}">{{ posts.tags.all|join:"," }}</a>   
+                                        </div>
+                                        <div class="title">
+                                            <a href="{{ posts.get_absolute_url }}">{{ posts.title }}</a>
+                                        </div>
+                                        <div class="text">
+                                            <p> {{ posts.get_markdown|truncatechars_html:120 }}</p>
+                                            <a href="{{ posts.get_absolute_url }}" class="button small">Read more</a>
+                                        </div>
+                                    </div>
+                                    <div class="meta">
+                                        <span class="date">{{ posts.timestamp }}</span>
+                                        <span class="author">Posted by <a href="#">{{ posts.user.get_full_name}}</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="widget">
+                        <div class="widget-title-wrapper">
+                            <div class="widget-title">
+                                ABOUT ME
+                                <div class="simple-line"></div>
+                            </div>
+                            <div class="simple-line"></div>
+                        </div>
+                        <style>
+                                @import url('https://fonts.googleapis.com/css?family=Mali');
+                              .about {
+                                font-family: 'Mali', cursive;
+                              }  
+                        </style>
+                        <div class="vcard text-center about">
+
+                            <img src="{% static 'images/vcard.jpg' %}" alt="" />
+                            <div class="mb-1"></div>
+                            <p>ProKatta is a place where you can get information about latest technologies, trends and innovation happening across the globe.</p>
+
+                            <p>World is changing everyday , and technology is playing it’s part actively, whether it’s your smartphone, driver less vehicles,
+                             trending apps or new gadgets. For tech lovers , who don’t want to miss any updates, ProKatta will share as much updates as possible from around the world.
+                            </p>
+                            <p>We also believes in having a good time while doing what we love, and we do love what we do.
+     
+                            We are also 100% positive the world would be a better place 
+                            if everyone spent 15 minutes a day in a ProKatta.</p>
+                            <div class="shout-svg">
+                                <h1 style="color: #FF8C00;">ProKatta</h1>
+                                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="widget-title-wrapper">
+                            <div class="widget-title">
+                                Search Post
+                                <div class="simple-line"></div>
+                            </div>
+                            <div class="simple-line"></div>
+                        </div>
+                        <div class="widget-social text-center">
+                            <form method="GET" action="">
+                                <input type="text" name='q' class="form-control" placeholder="Search Posts" value='{{ request.GET.q }}'/>
+                                <input type='submit' vlaue="Search"  class="button small"/>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="widget-title-wrapper">
+                            <div class="widget-title">
+                                 RECENT POSTS
+                                <div class="simple-line"></div>
+                            </div>
+                            <div class="simple-line"></div>
+                        </div>
+                        <div class="widget-recent-post">
+                            <ul>
+                                <li>
+                                    {% for posts in recents %}
+                                        <div class="featured">
+        									<a href="#">
+                                                <img src="{{ posts.image.url }}" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <h6 class="title">
+                                                <a href="{{ posts.get_absolute_url }}">{{ posts.title }}</a>
+                                            </h6>
+                                            <div class="info">
+                                                <div class="date">{{ posts.timestamp }}</div>
+                                                <div class="excerpt">{{ posts.get_markdown|truncatewords:4 }}</div><hr/>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </li> 
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="widget-title-wrapper">
+                            <div class="widget-title">
+                                THEME AD WIDGET
+                                <div class="simple-line"></div>
+                            </div>
+                            <div class="simple-line"></div>
+                        </div>
+                        <div class="widget-ads text-center">
+                            <a href="#"><img src="{% static 'images/advertise-pinkie.png' %}" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <!--<div class="widget-title-wrapper">
+                            <div class="widget-title">
+                                GALLERY
+                                <div class="simple-line"></div>
+                            </div>
+                            <div class="simple-line"></div>
+                        </div>
+                        <div class="widget-gallery">
+                            
+                            <img src="{{ images.images_img_url }}">
+                            <!--<a href="../../images/gallery/gallery_1.jpg" class="mfp-image gallery-item">
+                                <img src="{% static 'images/gallery/thumb/gallery_1.jpg' %}" alt="" />
+                            </a>
+                            <a href="../../images/gallery/gallery_2.jpg" class="mfp-image gallery-item">
+                                <img src="{% static 'images/gallery/thumb/gallery_2.jpg' %}" alt="" />
+                            </a>
+                            <a href="../../images/gallery/gallery_3.jpg" class="mfp-image gallery-item">
+                                <img src="{% static 'images/gallery/thumb/gallery_3.jpg' %}" alt="" />
+                            </a>
+                            <a href="../../images/gallery/gallery_4.jpg" class="mfp-image gallery-item">
+                                <img src="{% static 'images/gallery/thumb/gallery_4.jpg' %}" alt="" />
+                            </a>
+                            <a href="../../images/gallery/gallery_5.jpg" class="mfp-image gallery-item">
+                                <img src="{% static 'images/gallery/thumb/gallery_5.jpg' %}" alt="" />
+                            </a>
+                            <a href="../../images/gallery/gallery_6.jpg" class="mfp-image gallery-item">
+                                <img src="{% static 'images/gallery/thumb/gallery_6.jpg' %}" alt="" />
+                            </a>
+                            
+                        </div>-->
+                    </div>
+                    <div class="widget">
+                        <div class="widget-title-wrapper">
+                            <div class="widget-title">
+                                POPULAR TAGS
+                                <div class="simple-line"></div>
+                            </div>
+                            <div class="simple-line"></div>
+                        </div>
+                        <div class="widget-tags">
+                            <a href="#">Music</a>
+                            <a href="#">Kids</a>
+                            <a href="#">Party</a>
+                            <a href="#">Love</a>
+                            <a href="#">Shopping</a>
+                            <a href="#">Vintage</a>
+                            <a href="#">Trends</a>
+                            <a href="#">Social</a>
+                            <a href="#">Family</a>
+                            <a href="#">LifeStyle</a>
+                            <a href="#">Travel</a>
+                            <a href="#">Blogging</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block categories %}
+	<div id='main'>
+		<div class="section mt-7 mb-9">
+            <div class="container">
+                <div class="row">
+                    {% for category in category %}
+                        <div class="col-md-4">
+                            <div class="banner">
+                                {% if category.image %}
+                                    <a href="{{ category.get_absolute_url }}" class="link">
+                                        <img src="{{ category.image.url }}" alt="" />
+                                    </a>
+                                {% endif %}
+                                <div class="caption">
+                                    <span>{{ category.title }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

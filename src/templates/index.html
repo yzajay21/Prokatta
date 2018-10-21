@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	{% for posts in posts %}
+	  <h1><a href='{{ posts.get_absolute_url }}'>{{ posts.title }}</a></h1>
+	  <h2 class='display1'>{{ posts.content }}</h2>
+	  <h2 class='display1'>{{ posts.timestamp }}</h2>
+	   <h2>{{ posts.updated }}</h2>
+	{% endfor %}
+</body>
+</html>

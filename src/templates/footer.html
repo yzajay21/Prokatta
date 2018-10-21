@@ -1,0 +1,122 @@
+{% load staticfiles %}
+{% url 'home' as home_url %}
+{% url 'about' as about %}
+{% url 'contact' as contact %}
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                            <div class="widget">
+                                <div class="widget-inner">
+                                    <div class="widget-title">ENERGIZE YOUR INBOX</div>
+                                    <p>Subscribe and stay updated with the latest news from us. The timbers beneath are of a peculiar strength.<br>Oh, this is just some nonsense text. We never spam!</p>
+                                    <div class="mb-1"></div>
+                                    {% if messages %}
+                                {% for message in messages  %}
+                                    <div {% if message.tags %} class="{{ message.tags  }} {% endif %}alert alert-warning alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                        
+                                    {{ message }}
+                                    </div>
+                                {% endfor %}
+                                {% else %}
+                                <form method="post">{% csrf_token %}
+                                    <div class="form-fields">
+                                        <div class="form">
+                                            <h2><a href="{% url 'newsletter:newsletter_signup' %}"> Subscribe to News letter</a></h2>
+                                            
+                                        </div>
+                                        <p class="note">Note* : Spectators are our passion. Creation is our core.</p>
+                                    </div>
+                                </form>
+                            {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="widget">
+                                <div class="widget-inner">
+                                    <div class="widget-title">LATEST TWEETS</div>
+                                    <div class="recent-tweets">
+                                        <div class="twt-avatar">
+                                            <a target="_blank" href="#">
+                                                <img src="{% static 'images/avatar/author.jpg' %}" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="twt-author fw-bolder">Author</div>
+                                        <div class="twt-follow">
+                                            <a target="_blank" href="https://twitter.com/prokattaweb">Follow on Twitter</a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="simple_line"></div>
+                                        <div class="twt-icon pull-left">
+                                            <i class="fab fa-twitter"></i>
+                                        </div>
+                                        <div class="twitter-slider" data-autoplay="true" data-delay="5500">
+                                            <ul class="slides">
+                                                <li class="twt-item">
+                                                    <div class="twt-body">
+                                                        <div class="twt-in">
+                                                            <p>ProKatta is a place where you can get information about latest technologies, trends and innovation happening across the globe.</p>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        <div class="col-md-4">
+                            <div class="widget">
+                                <div class="widget-inner">
+                                    <div class="widget-title ml-12">Get Connected</div>
+                                    <div class="recent-posts">
+
+                                        <div class="widget-social text-center">
+                                            <ul class="recent-post">
+                                                <li>
+                                                    <a href="#">Instagram<i class="fab fa-instagram"></i></a>
+                                                    <div class="simple_line"></div>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Facebook<i class="fab fa-facebook"></i></a>
+                                                    <div class="simple_line"></div>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Twitter<i class="fab fa-twitter"></i></a>
+                                                    <div class="simple_line"></div>
+                                                </li>
+                                    
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <div class="copyright">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul class="footer-menu">
+                                <li><a href="{{ home_url }}">HOME</a></li>
+                                <li><a href="{{ about }">ABOUT ME</a></li>
+                                <li><a href="{{ contact }">GET IN TOUCH</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-right text-center-xs">Developed by 24MotionPictures</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="hook-to-top" class="prk_radius">
+            <i class="fa fa-arrow-up"></i>
+        </div>

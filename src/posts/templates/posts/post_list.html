@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+                <div class="section mt-7">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="blog-list">
+                                {% for posts in posts %}
+                                    <div class="blog-item text-center mb-6">
+                                        <div class="blog-inner">
+                                            <a href="blog-detail.html">
+                                                <div class="overlay"><i class="mdi-link-variant"></i></div>
+                                                <img src="{% static 'images/blog/blog_11.jpg' %}" alt=""  class="img-fluid" style="width:200px; height:200px;"/>
+                                            </a>
+                                            <div class="info">
+                                                <div class="tags">
+                                                    <a href="#">Free Your Mind</a>, <a href="#">LifeStyle</a>
+                                                </div>
+                                                <div class="title">
+                                                    <a href="blog-detail.html">{{ posts.title }}</a>
+                                                </div>
+                                                <div class="text">{% if posts.draft %} <h3>Draft</h3>{% endif %}{% if posts.publish > today %}<h3>Staff Only:Future Post{% endif %}</h3> 
+                                                    <p class="content-markdown post-detail-item"> {{ posts.get_markdown|truncatechars_html:20 }}</p>
+                                                    <a href="#" class="button small">Read more</a>
+                                                </div>
+                                            </div>
+                                            <div class="meta">
+                                                <span class="date">{{ posts.timestamp }}</span>
+                                                <span class="author">Posted by <a href="#">Admin</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                    
+                                    
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="widget">
+                                    <div class="widget-title-wrapper">
+                                        <div class="widget-title">
+                                            ABOUT ME
+                                            <div class="simple-line"></div>
+                                        </div>
+                                        <div class="simple-line"></div>
+                                    </div>
+                                    <div class="vcard text-center">
+                                        <img src="{% static 'images/vcard.jpg' %}" alt="" />
+                                        <div class="mb-1"></div>
+                                        <p>Beyond the pit stood the little wedge of people with the white flag at its apex, arrested by these wonders.</p>
+                                        <div class="shout-svg">
+                                            <h1 style=color:pink;">Ajay Mundhe</h1>
+                                           <!-- <img src="{% static 'images/signature.jpg' %}" alt="" />-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget">
+                                    <div class="widget-title-wrapper">
+                                        <div class="widget-title">
+                                            GET CONNECTED
+                                            <div class="simple-line"></div>
+                                        </div>
+                                        <div class="simple-line"></div>
+                                    </div>
+                                    <div class="widget-social text-center">
+                                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                                        <a href="#"><i class="fab fa-flickr"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fab fa-pinterest-square"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-vimeo-square"></i></a>
+                                        <a href="#"><i class="fab fa-rss"></i></a>
+                                    </div>
+                                </div>
+                                <div class="widget">
+                                    <div class="widget-title-wrapper">
+                                        <div class="widget-title">
+                                            RECENT POSTS
+                                            <div class="simple-line"></div>
+                                        </div>
+                                        <div class="simple-line"></div>
+                                    </div>
+                                    <div class="widget-recent-post">
+                                        <ul>
+                                            <li>
+                                                <div class="featured">
+                                                    <a href="blog-detail.html">
+                                                        <img src="{% static 'images/blog/thumb/blog_1.jpg' %}" alt="" />
+                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    <h6 class="title">
+                                                        <a href="blog-detail.html">We Love Blogging</a>
+                                                    </h6>
+                                                    <div class="info">
+                                                        <div class="date">May 31, 2017</div>
+                                                        <div class="excerpt">The steamer which crossed the Pacific from Yokohama to San Francisco made a …</div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="featured">
+                                                    <a href="blog-detail.html">
+                                                        <img src="{% static 'images/blog/thumb/blog_2.jpg' %}" alt="" />
+                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    <h6 class="title">
+                                                        <a href="blog-detail.html">The Good Life</a>
+                                                    </h6>
+                                                    <div class="info">
+                                                        <div class="date">May 31, 2017</div>
+                                                        <div class="excerpt">The steamer which crossed the Pacific from Yokohama to San Francisco made a …</div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="featured">
+                                                    <a href="blog-detail.html">
+                                                        <img src="{% static 'images/blog/thumb/blog_3.jpg' %}" alt="" />
+                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    <h6 class="title">
+                                                        <a href="blog-detail.html">Amazed, But Faithful</a>
+                                                    </h6>
+                                                    <div class="info">
+                                                        <div class="date">May 31, 2017</div>
+                                                        <div class="excerpt">The steamer which crossed the Pacific from Yokohama to San Francisco made a …</div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="widget">
+                                    <div class="widget-title-wrapper">
+                                        <div class="widget-title">
+                                            THEME AD WIDGET
+                                            <div class="simple-line"></div>
+                                        </div>
+                                        <div class="simple-line"></div>
+                                    </div>
+                                    <div class="widget-ads text-center">
+                                        <a href="#"><img src="{% static 'images/advertise-pinkie.png' %}" alt="" /></a>
+                                    </div>
+                                </div>
+                                <div class="widget">
+                                    <div class="widget-title-wrapper">
+                                        <div class="widget-title">
+                                            GALLERY
+                                            <div class="simple-line"></div>
+                                        </div>
+                                        <div class="simple-line"></div>
+                                    </div>
+                                    <div class="widget-gallery">
+                                        <a href="../../images/gallery/gallery_1.jpg" class="mfp-image gallery-item">
+                                            <img src="{% static 'images/gallery/thumb/gallery_1.jpg' %}" alt="" />
+                                        </a>
+                                        <a href="../../images/gallery/gallery_2.jpg" class="mfp-image gallery-item">
+                                            <img src="{% static 'images/gallery/thumb/gallery_2.jpg' %}" alt="" />
+                                        </a>
+                                        <a href="../../images/gallery/gallery_3.jpg" class="mfp-image gallery-item">
+                                            <img src="{% static 'images/gallery/thumb/gallery_3.jpg' %}" alt="" />
+                                        </a>
+                                        <a href="../../images/gallery/gallery_4.jpg" class="mfp-image gallery-item">
+                                            <img src="{% static 'images/gallery/thumb/gallery_4.jpg' %}" alt="" />
+                                        </a>
+                                        <a href="../../images/gallery/gallery_5.jpg" class="mfp-image gallery-item">
+                                            <img src="{% static 'images/gallery/thumb/gallery_5.jpg' %}" alt="" />
+                                        </a>
+                                        <a href="../../images/gallery/gallery_6.jpg" class="mfp-image gallery-item">
+                                            <img src="{% static 'images/gallery/thumb/gallery_6.jpg' %}" alt="" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="widget">
+                                    <div class="widget-title-wrapper">
+                                        <div class="widget-title">
+                                            POPULAR TAGS
+                                            <div class="simple-line"></div>
+                                        </div>
+                                        <div class="simple-line"></div>
+                                    </div>
+                                    <div class="widget-tags">
+                                        <a href="#">Music</a>
+                                        <a href="#">Kids</a>
+                                        <a href="#">Party</a>
+                                        <a href="#">Love</a>
+                                        <a href="#">Shopping</a>
+                                        <a href="#">Vintage</a>
+                                        <a href="#">Trends</a>
+                                        <a href="#">Social</a>
+                                        <a href="#">Family</a>
+                                        <a href="#">LifeStyle</a>
+                                        <a href="#">Travel</a>
+                                        <a href="#">Blogging</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{% endblock %}

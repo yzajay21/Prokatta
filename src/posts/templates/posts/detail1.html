@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block head_title %}{{ instance.title }} | {{ block.super }} {% endblock %}
+
+ {% block content %}
+ <style>
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+	.blogtitle {
+		font-family: 'EB Garamond', serif;
+	}
+	.blog-detail1 {
+		font-family: 'Slabo 27px', serif !important;
+
+	}
+	.display1 .short-description {
+		font-family: 'Raleway', sans-serif;
+	}
+</style>
+ 	<div id="main">
+ 		<div class="container">
+ 			<div class="row">
+				<div class="section section-bg-1 section-fixed">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 mt-5 col-sm-12 ">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 mt-5">
+					<h1 class="blogtitle">{{ instance.title}}</h1>
+					<h5 class="short-description mt-3 ml-3"> {{ instance.short_description }}...</h5>
+				</div>
+ 				<div class="col-md-6">
+					<div class="blog-detail-header">
+						{% if instance.image %}
+							<img src='{{ instance.image.url }}' class="img-responsive img-rounded"/>
+					 	{% endif %}
+									
+					</div>
+				</div>
+			</div>
+			<div class="section mt-7">
+			<div class="container">
+				<d<iv class="row">
+					<div class="col-sm-8">
+						<div class="single-content">
+							<h3 class='display1 post-detail-item'>
+								{% if instance.read_time <= 1 %} 1 min Read{% else %}{{ instance.read_time }}min Read{% endif %}
+								</h3>
+							<br/>
+							<h5 class='blog-detail1 post-detail-item'>{{ instance.get_markdown|safe|linebreaks }}</h5>
+							<br />
+							<div class="widget">
+		                        <div class="widget-title-wrapper">
+		                            <div class="widget-title">
+		                                POPULAR TAGS
+		                                <div class="simple-line"></div>
+		                            </div>
+		                            <div class="simple-line"></div>
+		                        </div>
+		                        <div class="widget-tags">
+		                            <a href="#">Tags: {{ instance.tags.all|join:", " }}</a>
+		                        </div>
+                    		</div>
+							<p class="tags"></p>
+						</div>
+						<div class="blog-detail info-bottom">
+							<div class="date" style="color:#000;">
+								<span>{{ instance.publish }}</span>
+							</div>
+							<div class="share">
+								
+								
+								<a href="https://twitter.com/home?status={{share_string}}%20%20{{ request.build_absolute_uri }}"><i class="fab fa-twitter"></i></a>
+								
+							</div>
+							<div class="comment">
+								<p style="color:#000;">{% with comments.count as total_comments %}
+								
+									{{ total_comments }} comment{{ total_comments|pluralize }}
+								
+								{% endwith %}</p>
+							</div>
+						</div>
+						<div class="author-info">
+							<div class="author-avatar">
+								<a href="#"><img src="{% static 'images/author/avatar.png' %}" alt="" /></a>
+							</div>
+							<a class="author-name" href="#">
+								{% if instance.user.get_full_name %}
+			   						<p>Author : {{ instance.user.get_full_name }}</p>
+			   					{% endif %}
+							</a>
+							
+						</div>
+						
+						<div class="comments">
+							<h4 class="comment-title">
+								{% with comments.count as total_comments %}
+								<h3>
+									{{ total_comments }} comment{{ total_comments|pluralize }}
+								</h3>
+								{% endwith %}
+							</h4>
+							<h4 class="comment-subtitle blogtitle">On the {{ instance.title }}</h4>
+							{% for comment in comments %}
+								<ol class="comment-list">
+									<li class="comment">
+										<div class="content">
+											<div class="comment-author">
+												<img alt="" src="{% static 'images/author/avatar.png' %}" class="avatar" />
+											</div>
+											<div class="comment-content">
+												<div class="meta">
+													<h3 class="name">{{ comment.name }}</h3>
+													<span class="time">{{ comment.created|timesince }} ago</span>
+													<span class="divider">-</span>
+													<div class="text">
+														<p>{{ comment.body|linebreaks }}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ol>
+							{% empty %}
+							<p>There are no comments yet.</p>
+							{% endfor %}
+						</div>
+						<div class="respond-wrapper">
+							<div class="comment-respond">
+								<h4 class="comment-title">Leave a Comment</h4>
+								<p class="comment-subtitle">Your feedback is valuable for us. Your email will not be published.</p>
+									
+								{% if new_comment %}
+										<h2>Your comment has been added.</h2>
+										{% else %}
+										
+										<form action="" method="POST">
+											{{ comment_form|crispy }}
+											{% csrf_token %}
+											<p><input type="submit" class="button small" value="Add comment"></p>
+										</form>
+								{% endif %}
+							</div>
+						</div>
+						<div class="blog-detail related-post">
+							<h4 class="title">Related Blogs</h4>
+							<p class="sub-title">Other posts that you should not miss.</p>
+							<div class="mb-3"></div>
+							<div class="blog-list">
+								<div class="row">
+									{% for posts in related %}
+									<div class="col-md-4">
+										<div class="blog-item text-center mb-6">
+											
+											<div class="blog-inner">
+												
+												<a href="blog-detail.html">
+													<div class="overlay">
+														<i class="mdi-link-variant"></i></div>
+													<img src="{{ posts.image.url }}" alt="" style="width:1=200px !important ; height:200px !important;">
+														
+													
+												</a>
+												<div class="info">
+													
+													<div class="title">
+														<a href="blog-detail.html">{{ posts.title|truncatechars:20 }}</a>
+													</div>
+													<div class="text">
+														<p>{{ posts.get_markdown|safe|truncatewords:15 }}</p>
+														<a href="#" class="button small">Read more</a>
+													</div>
+												</div>
+												<div class="meta">
+													<span class="date">April 05, 2018</span>
+													<span class="author">Posted by <a href="#">admin</a></span>
+												</div>
+												
+											</div>
+											
+										</div>
+										
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="widget">
+							<div class="widget-title-wrapper">
+								<div class="widget-title">
+									Prokatta
+									<div class="simple-line"></div>
+								</div>
+								<div class="simple-line"></div>
+							</div>
+							<div class="vcard text-center">
+								<img src="../../images/vcard.jpg" alt="" />
+									<div class="mb-1"></div>
+									<p>ProKatta is a place where you can get information about latest technologies, trends and innovation happening across the globe.</p>
+								
+							</div>
+						</div>
+						<div class="widget">
+							<div class="widget-title-wrapper">
+								<div class="widget-title">
+									GET CONNECTED
+									<div class="simple-line"></div>
+								</div>
+								<div class="simple-line"></div>
+							</div>
+							<div class="widget-social text-center">
+							
+								<a href="https://www.instagram.com/prokattaweb"><i class="fab fa-instagram"></i></a>
+								
+								<a href="https://twitter.com/prokattaweb"><i class="fab fa-twitter"></i></a>
+							
+								<a href="https://m.facebook.com/prokatta/"><i class="fab fa-facebook"></i></a>
+							</div>
+						</div>
+						<div class="widget">
+							<div class="widget-title-wrapper">
+								<div class="widget-title">
+									RECENT POSTS
+									<div class="simple-line"></div>
+								</div>
+								<div class="simple-line"></div>
+							</div>
+							<div class="widget-recent-post">
+                            <ul>
+                                <li>
+                                    {% for posts in posts %}
+                                        <div class="featured">
+        									<a href="#">
+                                                <img src="{{ posts.image.url }}" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <h6 class="title">
+                                                <a href="{{ posts.get_absolute_url }}">{{ posts.title }}</a>
+                                            </h6>
+                                            <div class="info">
+                                                <div class="date">{{ posts.timestamp }}</div>
+                                                <div class="excerpt">{{ posts.get_markdown|safe|truncatewords:4 }}</div><hr/>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </li> 
+                            </ul>
+                        </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block head_title %}{{ instance.title }} | {{ block.super }} {% endblock %}
+
+ {% block content %}
+ 	<div id="main">
+ 		<div class="section section-bg-1 section-fixed">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 sm-12">
+						<div class="blog-detail-header">
+							{% if instance.image %}
+			 	 				<img src='{{ instance.image.url }}' class="img-responsive" style="width:900px;height:900;"/>
+	 						{% endif %}
+							<div class="blog-detail-header-content text-center">
+								<div class="meta">
+									<a href="#">LifeStyle</a>, <a href="#">Untold Stories</a>
+								</div>
+								<h2 class="entry-title">{{ instance.title }}</h2>
+								<div class="info">
+									<span class="date">{{ instance.publish }}</span>
+									<span class="divider">-</span>
+									<span class="author">
+										{% if instance.user.get_full_name %}
+			   								<p>Author : {{ instance.user.get_full_name }}</p>
+			   							{% endif %}
+			   						</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="section mt-7">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8">
+						<div class="single-content">
+							<h2 class='display1 post-detail-item'>
+								{% if instance.read_time <= 1 %} 1 min Read{% else %}{{ instance.read_time }}min Read{% endif %}
+								</h2>
+							<br />
+							<p class='display1 post-detail-item'>{{ instance.get_markdown|safe|linebreaks }}</p>
+							<br />
+							<div class="widget">
+		                        <div class="widget-title-wrapper">
+		                            <div class="widget-title">
+		                                POPULAR TAGS
+		                                <div class="simple-line"></div>
+		                            </div>
+		                            <div class="simple-line"></div>
+		                        </div>
+		                        <div class="widget-tags">
+		                            <a href="#">Tags: {{ instance.tags.all|join:", " }}</a>
+		                        </div>
+                    		</div>
+							<p class="tags"></p>
+						</div>
+						<div class="blog-detail info-bottom">
+							<div class="date" style="color:#000;">
+								<span>{{ instance.publish }}</span>
+							</div>
+							<div class="share">
+								<a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"><i class="fab fa-facebook"></i></a>
+								<a href="#"><i class="fab fa-pinterest"></i></a>
+								<a href="https://twitter.com/home?status={{share_string}}%20%20{{ request.build_absolute_uri }}"><i class="fab fa-twitter"></i></a>
+								<a href="#"><i class="fab fa-google-plus"></i></a>
+							</div>
+							<div class="comment">
+								<p style="color:#000;">{% with comments.count as total_comments %}
+								
+									{{ total_comments }} comment{{ total_comments|pluralize }}
+								
+								{% endwith %}</p>
+							</div>
+						</div>
+						<div class="author-info">
+							<div class="author-avatar">
+								<a href="#"><img src="{% static 'images/author/author_1.jpg' %}" alt="" /></a>
+							</div>
+							<a class="author-name" href="#">
+								{% if instance.user.get_full_name %}
+			   						<p>Author : {{ instance.user.get_full_name }}</p>
+			   					{% endif %}
+							</a>
+							<div class="author-description">
+								As for the Lion, he sniffed the fresh air with delight and whisked his tail from side to side in pure joy at being in the country again, while Toto ran around them and chased the moths and butterflies, barking merrily all the time. As he stood hovering over you half suspended in air, so wildly and eagerly peering towards the horizon.
+							</div>
+						</div>
+						<div class="blog-detail related-post">
+							<h4 class="title">Related News</h4>
+							<p class="sub-title">Other posts that you should not miss.</p>
+							<div class="mb-3"></div>
+							<div class="blog-list">
+								<div class="row">
+									<div class="col-md-4">
+										<div class="blog-item text-center mb-6">
+											<div class="blog-inner">
+												<a href="blog-detail.html">
+													<div class="overlay"><i class="mdi-link-variant"></i></div>
+													<img src="../../images/blog/blog_11.jpg" alt="" />
+												</a>
+												<div class="info">
+													<div class="tags">
+														<a href="#">Free Your Mind</a>, <a href="#">LifeStyle</a>
+													</div>
+													<div class="title">
+														<a href="blog-detail.html">Getting Things Right</a>
+													</div>
+													<div class="text">
+														<p> The steamer which crossed the Pacific from Yokohama to San Francisco made a direct connection with that …</p>
+														<a href="#" class="button small">Read more</a>
+													</div>
+												</div>
+												<div class="meta">
+													<span class="date">April 05, 2018</span>
+													<span class="author">Posted by <a href="#">admin</a></span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="comments">
+							<h4 class="comment-title">
+								{% with comments.count as total_comments %}
+								<h2>
+									{{ total_comments }} comment{{ total_comments|pluralize }}
+								</h2>
+								{% endwith %}
+							</h4>
+							<p class="comment-subtitle">{{ instance.title }}</p>
+							{% for comment in comments %}
+								<ol class="comment-list">
+									<li class="comment">
+										<div class="content">
+											<div class="comment-author">
+												<img alt="" src="{% static 'images/author/avatar.png' %}" class="avatar" />
+											</div>
+											<div class="comment-content">
+												<div class="meta">
+													<h3 class="name">{{ comment.name }}</h3>
+													<span class="time">{{ comment.created|timesince }} ago</span>
+													<span class="divider">-</span>
+													<div class="text">
+														<p>{{ comment.body|linebreaks }}</p>
+													</div>
+													<!--<span class="link"><a class="color" href="#">Reply</a>-->
+
+
+													</span>
+												</div>
+												
+											</div>
+										</div>
+										
+									</li>
+								</ol>
+							{% empty %}
+							<p>There are no comments yet.</p>
+							{% endfor %}
+						</div>
+						
+		<div class="respond-wrapper">
+			<div class="comment-respond">
+				<h4 class="comment-title">Leave a Comment</h4>
+				<p class="comment-subtitle">Your feedback is valuable for us. Your email will not be published.</p>
+				
+					{% if new_comment %}
+							<h2>Your comment has been added.</h2>
+							{% else %}
+							
+							<form action="" method="POST">
+								{{ comment_form|crispy }}
+								{% csrf_token %}
+								<p><input type="submit" class="button small" value="Add comment"></p>
+							</form>
+					{% endif %}
+			</div>
+		</div>
+	</div>
+							
+{% endblock %}

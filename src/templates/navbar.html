@@ -1,0 +1,189 @@
+{% load staticfiles %}
+{% url 'category' as category %}
+{% url 'home' as home_url %}
+{% url 'about' as about %}
+{% url 'contact' as contact %}
+<div id="body_hider" class="hider_flag"></div>
+        <div id="body_hider_full" class="hider_flag"></div>
+        <div class="hidden-bar desktop-panel">
+            <div class="hidden-bar-inner">
+                <div id="hidden-bar-logo" class="hidden-bar-logo">
+                    <a href="{{ home_url }}"><img src="{% static 'images/logo1.png' %}" alt="" style="width:200px; height:300px;"/></a>
+                </div>
+                <div class="widget mb-5 text-center">
+                    <p class="mb-0">Ruston Colony,</p>
+                    <p>5690-970 Pune City</p>
+                </div>
+                <div class="widget">
+                    <div class="widget-title-wrapper">
+                        <div class="widget-title">
+                            GET CONNECTED
+                            <div class="simple-line"></div>
+                        </div>
+                        <div class="simple-line"></div>
+                    </div>
+                    <div class="widget-social text-center">
+                        
+                        
+                        <a href="https://www.instagram.com/prokattaweb"><i class="fab fa-instagram"></i></a>
+                        <a href="https://m.facebook.com/prokatta/"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/prokattaweb"><i class="fab fa-twitter"></i></a>
+                        
+                    </div>
+                </div>
+                <div class="widget">
+                    
+                    <div class="widget-gallery">
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="hidden-bar mobile-panel">
+            <div class="hidden-bar-inner">
+                <div id="hidden-bar-logo-2" class="hidden-bar-logo">
+                    <a href="{{ home_url }}"><img src="{% static 'images/logo2.png' %}" alt="" /></a>
+                </div>
+                <div class="mobile-menu">
+                    <ul class="nav-collapse navbar-nav">
+                        <li>
+                            <a href="{{ home }}">Home</a>
+                            
+                        </li>
+                        <li>
+                            <a href="{{ about }}">About Us</a>
+                           
+                        </li>
+                       <li>
+                            <a href="{% url 'category:category' %}">Categories</a>
+                            
+                        </li>
+                      
+                        <li><a href="{{ contact }}">Get in touch</a></li>
+                       
+                    </ul>
+                </div>
+                <div class="simple-line mt-2 mb-2"></div>
+                <div class="widget">
+                    <div class="widget-title-wrapper">
+                        <div class="widget-title white">
+                            GET CONNECTED
+                        </div>
+                    </div>
+                    <div class="widget-social text-center">
+                       
+                       
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://m.facebook.com/prokatta/"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="site">
+            
+            <header class="header header-sticky">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="sticky-logo">
+                                <a href="{{ home_url }}">
+                                    
+                                    <img src="{% static 'images/logo1.png'%}" alt="" style="width:200px; height:100px;" />
+                                </a>
+                            </div>
+                            <div class="sticky-side-menu">
+                                <div class="sidebar-trigger hidden-bar-toggle">
+                                    <div class="line line-1"></div>
+                                    <div class="line line-2"></div>
+                                    <div class="line line-3"></div>
+                                </div>
+                            </div>
+                            <div class="sticky-menu">
+                                <div class="main-menu">
+                                    <div class="main-menu-inner">
+                                        <ul class="nav-collapse navbar-nav">
+                                            <li>
+                                                <a href="{{ home_url }}">Home <i class="fa fa-angle-down"></i></a>
+                                               
+                                            </li>
+                                            <li>
+                                                <a href="{{ about }}">About US</a>
+                                                
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'category:category' %}">Categories</a>
+                                                
+                                            </li>
+                                            <li><a href=" {{ contact }}">Get in touch</a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <header class="header header-desktop">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3 hidden-sm hidden-xs pl-4">
+                            <div class="menu-social">
+                                <a href="https://m.facebook.com/prokatta/"><i class="fab fa-facebook"></i></a>
+                                <a href="https://twitter.com/prokattaweb"><i class="fab fa-twitter"></i></a>
+                                
+                                <a href="https://www.instagram.com/prokattaweb"><i class="fab fa-instagram"></i></a>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div id="logo" class=" text-left-sm">
+                                <a href="{{ home_url }}">
+                                    
+                                    <img src="{% static 'images/logo2.png' %}" alt="Logo" style="width:400px;height:300px; margin-left:50%;"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-6 pr-4">
+                            <div class="side-menu">
+                                <div class="sidebar-trigger hidden-bar-toggle">
+                                    <div class="line line-1"></div>
+                                    <div class="line line-2"></div>
+                                    <div class="line line-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 p-0">
+                            <div class="main-menu">
+                                <div class="main-menu-inner">
+                                    <ul class="nav-collapse navbar-nav">
+                                        <li>
+                                            <a href="{{ home_url }}">Home</a>
+                                            
+                                        </li>
+                                        <li>
+                                            <a href="{{ about }}">About Us</a>
+                                            
+                                        </li>
+                                        
+                                        <li class="megamenu mega-col-4">
+                                            <a href="{% url 'category:category' %}">category <i class="fa fa-angle-down"></i></a>
+                                           
+                                              
+                                        </li>
+                            
+                                        <li><a href="{{ contact }}">Get in touch</a></li>
+                                       
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>

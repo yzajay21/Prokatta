@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div id="main">
+	
+	<div class="section mt-7 mb-10">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8">
+					<h5 class="dark fw-600 fz-22 mb-1">I WOULD LOVE TO HEAR FROM YOU</h5>
+					<div class="simple-line"></div>
+					<div class="mb-2"></div>
+					<p>The try-works are planted between the foremast and mainmast, the most roomy part of the deck. The timbers beneath are of a peculiar strength, fitted to sustain the weight of an almost solid mass of brick and mortar, some ten feet by eight square. The strong vapor now completely filling.</p>
+					<div class="mb-4"></div>
+					{% if messages %}
+						{% for message in messages  %}
+							<div {% if message.tags %} class="{{ message.tags  }} {% endif %}alert alert-warning 	alert-dismissible" role="alert">
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span></button>
+											  	
+								{{ message }}
+							</div>
+							{% endfor %}
+					{% else %}
+					<form method="post" class="contact-form">{% csrf_token %}
+						
+						<p>
+							<label for="id_name">Name:</label> 
+							<input type="text" name="name" value="Ajay Mudhe" maxlength="150" required="" id="id_name" class="form-control">
+						</p>
+						<p>
+							<label for="id_email">Email:</label> <input type="email" name="email" value="ajaymundhe21@gmail.com" maxlength="254" required="" id="id_email" class="form-control">
+						</p>
+						<p>
+							<label for="id_subject">Subject:</label> <input type="text" name="subject" value="aaa" maxlength="200" required="" id="id_subject" class="form-control">
+						</p>
+						<p>
+							<label for="id_message">Message:</label> <textarea name="message" cols="40" rows="10" required="" id="id_message" class="form-control">aaaaaaaaaaa</textarea>
+						</p>
+						<div class="row">
+							<div class="col-md-12">
+								<input type="submit" value="SEND US NOW" class="button" />
+							</div>
+						</div>
+								
+					</form>
+					{% endif %}
+				</div>
+							<div class="col-sm-4">
+								<h5 class="dark fw-600 fz-22 mb-1">CONTACT INFO</h5>
+								<div class="simple-line"></div>
+								<div class="mb-2"></div>
+								<p>He was going on with some wild reminiscences about his life. They could not stop looking into that beautiful sunset.</p>
+								<div class="mb-4"></div>
+								<h2 class="dark fw-bolder lato fz-24 mb-1">Chelsea Miller</h2>
+								<h4 class="dark fw-600 lato fz-14 contact-info">River Street, Blue Building</h4>
+								<h4 class="dark fw-600 lato fz-14 contact-info">5690-970 New York City</h4>
+								<div class="simple-line thick mt-2 mb-2 mw-40"></div>
+								<a class="fw-600 lato fz-14 contact-info" href="mailto:chelsea@shout.com">chelsea@shout.com</a>
+								<h4 class="dark fw-600 lato fz-14 contact-info">+1 234 567 890</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+</div>
+
+{% endblock %}
+
+
+<div class="row">
+						<div class="col-md-12">
+							<textarea name="message" cols="40" rows="10" required="" id="id_message"></textarea>
+							<div class="mb-2"></div>
+						</div>
+						<div class="col-md-4">
+							<input type="text" name="name" maxlength="150" required="" id="id_name">
+							<div class="mb-2"></div>
+						</div>
+						<div class="col-md-4">
+							<input type="email" name="email" maxlength="254" required="" id="id_email">
+							<div class="mb-2"></div>
+						</div>
+						<div class="col-md-4">
+							<input type="text" name="subject" maxlength="200" required="" id="id_subject">
+							<div class="mb-2"></div>
+						</div>
+						<div class="col-md-3">
+							<input type="submit" class="button" value="Send message"/>
+						</div>
+					</div>
